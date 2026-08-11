@@ -1,0 +1,212 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Page</title>
+    <link rel="stylesheet" href="{% static 'project/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <a class="logo">
+                <img src="{% static 'project/images/logo.png' %}" height="45" alt="logo">
+            </a>
+            <ul class="menu-title">
+                <li><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                <li><a class="nav-link" href="{% url 'destination' %}">Destination</a></li>
+                <li><a class="nav-link">Package</a></li>
+                <li><a class="nav-link" href="{% url 'bookmytrip' %}">Book My Trip</a></li>
+                <li><a class="nav-link" href="{% url 'contactus' %}">Contactus</a></li>
+                <li><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
+                <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                <button class="admin-login">
+                    <a class="nav-link" href="{% url 'travel_admin:admin_login' %}">
+                        <i class="fas fa-user-shield"></i> Admin Login
+                    </a>
+                </button>
+            </ul>
+        </div>
+        <header>
+            <div class="slide">
+                <img src="{% static 'project/images/packages.JPG' %}">
+            </div>
+            <div class="content">
+                <div class="packages">
+                    <div class="package-img">
+                        <a><img src="{% static 'project\images\india.jpg' %}"></a>
+                        <a><h4>India</h4></a>
+                        <div class="package-content">Discover India 5 Nights - Super Saver Holiday</div>
+                        <div class="package-content">5 Nights - 6 Days</div>
+                        <div class="package-content"><strong>Rs.20,000 Per Person</strong></div>
+                        <br>
+                       <button class="package-btn">
+                        <a href="{% url 'signup' %}">Book Now</a>
+                       </button>
+                       <button class="package-btn">
+                        <a href="{% url 'tipsfortravel' %}">Read Tips for Travel</a>
+                       </button>
+                    </div>
+                    <div class="package-img">
+                        <a><img src="{% static 'project\images\australia.jpg' %}"></a>
+                        <a><h4>Australia</h4></a>
+                        <div class="package-content">Discover Australia 4 Nights - Super Saver Holiday</div>
+                        <div class="package-content">4 Nights - 5 Days</div>
+                        <div class="package-content"><strong>Rs.36,932 Per Person</strong></div>
+                        <br>
+                       <button class="package-btn">
+                        <a href="{% url 'signup' %}">Book Now</a>
+                       </button>
+                       <button class="package-btn">
+                        <a href="{% url 'tipsfortravel' %}">Read Tips for Travel</a>
+                       </button>
+                    </div>
+                    <div class="package-img">
+                        <a><img src="{% static 'project\images\bali.jpg' %}"></a>
+                        <a><h4>Bali</h4></a>
+                        <div class="package-content">Discover Australia 5 Nights - Super Saver Holiday</div>
+                        <div class="package-content">5 Nights - 6 Days</div>
+                        <div class="package-content"><strong>Rs.40,932 Per Person</strong></div>
+                        <br>
+                        <button class="package-btn">
+                        <a href="{% url 'signup' %}">Book Now</a>
+                       </button>
+                       <button class="package-btn">
+                        <a href="{% url 'tipsfortravel' %}">Read Tips for Travel</a>
+                       </button>
+                    </div>
+                    <div class="package-img">
+                        <a><img src="{% static 'project\images\disneyland.jpg' %}"></a>
+                        <a><h4>Disneyland</h4></a>
+                        <div class="package-content">Discover Australia 6 Nights - Super Saver Holiday</div>
+                        <div class="package-content">6 Nights - 7 Days</div>
+                        <div class="package-content"><strong>Rs.50,000 Per Person</strong></div>
+                        <br>
+                        <button class="package-btn">
+                        <a href="{% url 'signup' %}">Book Now</a>
+                       </button>
+                       <button class="package-btn">
+                        <a href="{% url 'tipsfortravel' %}">Read Tips for Travel</a>
+                       </button>
+                    </div>
+                    <div class="package-img">
+                        <a><img src="{% static 'project\images\dubai.jpg' %}"></a>
+                        <a><h4>Dubai</h4></a>
+                        <div class="package-content">Discover Australia 3 Nights - Super Saver Holiday</div>
+                        <div class="package-content">3 Nights - 4 Days</div>
+                        <div class="package-content"><strong>Rs.28,560 Per Person</strong></div>
+                        <br>
+                        <button class="package-btn">
+                            <a href="{% url 'signup' %}">Book Now</a>
+                        </button>
+                        <button class="package-btn">
+                        <a href="{% url 'tipsfortravel' %}">Read Tips for Travel</a>
+                       </button>
+                    </div>
+                    <div class="package-img">
+                        <a><img src="{% static 'project\images\greece.jpg' %}"></a>
+                        <a><h4>Greece</h4></a>
+                        <div class="package-content">Discover Australia 8 Nights - Super Saver Holiday</div>
+                        <div class="package-content">8 Nights - 9 Days</div>
+                        <div class="package-content"><strong>Rs.68,590 Per Person</strong></div>
+                        <br>
+                        <button class="package-btn">
+                            <a href="{% url 'signup' %}">Book Now</a>
+                        </button>
+                        <button class="package-btn">
+                        <a href="{% url 'tipsfortravel' %}">Read Tips for Travel</a>
+                       </button>
+                    </div>
+                    <div class="package-img">
+                        <a><img src="{% static 'project\images\maldives.jpg' %}"></a>
+                        <a><h4>Maldives</h4></a>
+                        <div class="package-content">Discover Australia 9 Nights - Super Saver Holiday</div>
+                        <div class="package-content">9 Nights - 10 Days</div>
+                        <div class="package-content"><strong>Rs.88,790 Per Person</strong></div>
+                        <br>
+                        <button class="package-btn">
+                            <a href="{% url 'signup' %}">Book Now</a>
+                        </button>
+                        <button class="package-btn">
+                        <a href="{% url 'tipsfortravel' %}">Read Tips for Travel</a>
+                       </button>
+                    </div>
+                    <div class="package-img">
+                        <a><img src="{% static 'project\images\paris.jpg' %}"></a>
+                        <a><h4>Paris</h4></a>
+                        <div class="package-content">Discover Australia 7 Nights - Super Saver Holiday</div>
+                        <div class="package-content">7 Nights - 8 Days</div>
+                        <div class="package-content"><strong>Rs.80,000 Per Person</strong></div>
+                        <br>
+                        <button class="package-btn">
+                            <a href="{% url 'signup' %}">Book Now</a>
+                        </button>
+                        <button class="package-btn">
+                        <a href="{% url 'tipsfortravel' %}">Read Tips for Travel</a>
+                       </button>
+                    </div>
+                    <div class="package-img">
+                        <a><img src="{% static 'project\images\phuket.jpg' %}"></a>
+                        <a><h4>Phuket</h4></a>
+                        <div class="package-content">Discover Australia 7 Nights - Super Saver Holiday</div>
+                        <div class="package-content">7 Nights - 8 Days</div>
+                        <div class="package-content"><strong>Rs.90,000 Per Person</strong></div>
+                        <br>
+                        <button class="package-btn">
+                            <a href="{% url 'signup' %}">Book Now</a>
+                        </button>
+                        <button class="package-btn">
+                        <a href="{% url 'tipsfortravel' %}">Read Tips for Travel</a>
+                       </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="footer-section">
+	<div class="form-row">
+	<h6>ADDRESS</h6>
+	</div>
+	<div class="form-row">
+	Tours and Travels,
+	</div>
+	<div class="form-row">
+	Berna Road,Viratnagar,
+	</div>
+	<div class="form-row">
+	Himmatnagar, Gujarat.
+	</div>
+	
+    </div>
+	<div class="footer-section">
+	<div class="form-row">
+	<h6>CONTACT US</h6>
+	</div>
+	<div class="form-row">
+	mob: +91-6355791246
+	</div>
+	<div class="form-row">
+	email: travelproject241@gmail.com
+	</div>
+	
+    </div>
+	<div class="footer-section">
+	<div class="form-row">
+	<h6>DETAILS</h6>
+	</div>
+	<div class="form-row">
+	Travel booking company.
+	</div>
+	<div class="form-row">
+	Many satisfied customers.
+	</div>
+	</div>
+    </div>
+</footer>
+</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

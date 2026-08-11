@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'project/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <a class="logo">
+                <img src="{% static 'project/images/logo.png' %}" height="45" alt="Logo">
+            </a>
+            <ul class="menu-title">
+                <li><a class="nav-link">Home</a></li>
+                <li><a class="nav-link" href="{% url 'destination' %}">Destination</a></li>
+                <li><a class="nav-link" href="{% url 'package' %}">Package</a></li>
+                <li><a class="nav-link" href="{% url 'bookmytrip' %}">Book My Trip</a></li>
+                <li><a class="nav-link" href="{% url 'contactus' %}">Contactus</a></li>
+                <li><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
+                <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>    
+                <button class="admin-login">
+                    <a class="nav-link" href="{% url 'travel_admin:admin_login' %}">
+                        <i class="fas fa-user-shield"></i> Admin Login
+                    </a>
+                </button>
+            </ul>
+        </div>
+        <header>
+            <div class="slider">
+                <div class="slides">
+                    <img src="{% static 'project/images/1.jpg' %}">
+                    <img src="{% static 'project/images/2.jpg' %}">
+                    <img src="{% static 'project/images/3.jpg' %}">
+                </div>
+            </div>
+            <aside>
+                <div class="paragraph">
+                    <h4>Tour and Travels always deliver more than expectations.</h4>
+                    <p>Tour and Travels is an experienced travel company. We work with you to manage all elements of your travel in an optimum, cost effective and potential manner.
+                       At Tour and Travels company, we are committed to providing a professional service to our customers, ensuring about their benefit from our experience. 
+	                   We provide all the required facilities to our customers as it is our first priority to satisfy customer's need.
+	                   Tour and Travels is a highly visible, independent and progressive travel agency and we aim to satisfy our customer with better services. 
+	                   At last all we want is customer's happiness and satisfaction.<p>
+                    <p> For more details about our company, visit to various pages of this site.</p>
+                </div>
+            </div>
+</aside>
+</header>
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+<div class="footer-section">
+    <div class="form-row">
+        <h6>ADDRESS</h6>
+	</div>
+	<div class="form-row">
+        Tour and Travels,
+	</div>
+	<div class="form-row">
+        Berna Road,Viratnagar,
+	</div>
+	<div class="form-row">
+        Himmatnagar, Gujarat.
+	</div>
+</div>
+<div class="footer-section">
+    <div class="form-row">
+        <h6>CONTACT US</h6>
+	</div>
+	<div class="form-row">
+        mob: +91-6355791246
+	</div>
+	<div class="form-row">
+        email: travelproject241@gmail.com
+	</div>
+</div>
+<div class="footer-section">
+    <div class="form-row">
+        <h6>DETAILS</h6>
+	</div>
+    <div class="form-row">
+	    Travel booking company.
+	</div>
+	<div class="form-row">
+        Many satisfied customers.
+	</div>
+</div>
+</div>
+</footer>
+</div>
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Master</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="d-flex">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="{% static 'images/house.png' %}" width="80">
+                <h6>Welcome Admin</h6>
+            </div>
+            <hr>
+            <ul>
+                <li>
+                    <a href="{% url 'travel_admin:admin_dashboard' %}">
+                        <span class="material-icons">home</span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:inquirydetails' %}">
+                        <span class="material-icons">description</span>
+                        <span>Inquiry Detail</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:package_type' %}">
+                        <span class="material-icons">category</span>
+                        <span>Package Type</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:role_master' %}">
+                        <span class="material-icons">supervisor_account</span>
+                        <span>Role Master</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:plan_management' %}">
+                        <span class="material-icons">link</span>
+                        <span>Plan Master</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:userdetails' %}">
+                        <span class="material-icons">person</span>
+                        <span>Users Detail</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:destination' %}">
+                        <span class="material-icons">flight</span>
+                        <span>Destination</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:admin_logout' %}">
+                        <span class="material-icons">logout</span>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            {% block content %}
+            <h4>Role Management</h4>
+            <div class="topbar">
+                <a href="?action=new" class="btn">+NEW</a>
+                <a href="?action=data" class="btn">Data</a>
+            </div>
+            {% if action == "new" %}
+            <div class="card shadow-sm m-5">
+                <div class="card-body">
+                    <h5>Add Role</h5>
+                    <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label>Role Name</label>
+                        <select id="rolename" name="rolename" class="form-select">
+                            <option>--Select Role--</option>
+                            <option value="Admin" {% if form.user_rolename.value == "Admin" %}selected{% endif %}>Admin</option>
+                            <option value="Manager" {% if form.user_rolename.value == "Manager" %}selected{% endif %}>Manager</option>
+                            <option value="Travel Agent" {% if form.user_rolename.value == "Travel Agent" %}selected{% endif %}>Travel Agent</option>
+                            <option value="Customer" {% if form.user_rolename.value == "Customer" %}selected{% endif %}>Customer</option>
+                            <option value="Support" {% if form.user_rolename.value == "Support" %}selected{% endif %}>Support</option>
+                            <option value="Accountant" {% if form.user_rolename.value == "Accountant" %}selected{% endif %}>Accountant</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Description</label>
+                        <textarea id="description" name="description" class="form-control"></textarea>
+                    </div>
+                    <button class="btn-success" type="submit" name="save">Add Role</button>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+            {% if action == "data" %}
+            <div class="card shadow-sm m-5">
+                <div class="card-body">
+                <h5>Role List</h5>
+                <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>ID</th>
+                            <th>Role Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for role in role_list %}
+                        <tr>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">
+                                        <i class="material-icons">more_vert</i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item"
+                                            href="{% url 'travel_admin:edit_role_master' role.id %}">
+                                            <i class="material-icons">edit</i> Edit
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <form method="POST" action="{% url 'travel_admin:delete_role_master' role.id %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="dropdown-item"
+                                                onclick="return confirm('Are you sure you want to delete this?');">
+                                                <i class="material-icons">delete</i> Delete
+                                            </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>{{ role.id }}</td>
+                            <td>{{ role.rolename }}</td>
+                            <td>{{ role.description }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center">No roles found</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    const descriptions = {
+        "Admin": "Full access to dashboard, manage users, bookings, packages, payments and system settings.",
+        "Manager": "Can manage bookings, customers, packages and view reports but cannot change system settings.",
+        "Travel Agent": "Can create tour packages, handle customer inquiries and manage bookings.",
+        "Customer": "Can browse packages, make bookings and submit inquiries.",
+        "Support": "Handles help tickets, customer queries and feedback.",
+        "Accountant": "Manages payments, invoices and financial reports."
+    };
+
+    document.getElementById("rolename").addEventListener("change", function () {
+        let selected = this.value;
+        document.getElementById("description").value = descriptions[selected] || "";
+    });
+</script>    
+</body>
+</html>

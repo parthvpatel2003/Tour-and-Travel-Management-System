@@ -1,0 +1,126 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'project/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <a class="logo">
+                <img src="{% static 'project/images/logo.png' %}" height="45" alt="logo">
+            </a>
+            <ul class="menu-title">
+                <li><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                <li><a class="nav-link" href="{% url 'destination' %}">Destination</a></li>
+                <li><a class="nav-link" href="{% url 'package' %}">Package</a></li>
+               <li><a class="nav-link" href="{% url 'bookmytrip' %}">Book My Trip</a></li>
+                <li><a class="nav-link" href="{% url 'contactus' %}">Contactus</a></li>
+                <li><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
+                <li><a class="nav-link">Login</a></li>
+                <button class="admin-login">
+                    <a class="nav-link" href="{% url 'travel_admin:admin_login' %}">
+                        <i class="fas fa-user-shield"></i> Admin Login
+                    </a>
+                </button>
+            </ul>
+        </div>
+        <header>
+            <div class="slide">
+                <img src="{% static 'project/images/login.jpg' %}">
+            </div>
+            <div class="col-8 p-4">
+                <div class="heading">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page">User Login</li>
+                        </ol>
+                    </nav>
+                </div>
+                {% if msg %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ msg }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endif %}
+            {% if success %}
+            <p style="color:green;">{{ success }}</p>
+            {% endif %}
+
+            {% if error %}
+            <p style="color:red;">{{ error }}</p>
+            {% endif %}
+            <div class="form">
+                <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="email">E-Mail <span class="req">*</span></label>
+                    <input type="email" class="form-control" name="email" placeholder="xyz@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password <span class="req">*</span></label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="xyz123" required>
+                </div>
+                <div class="form-group">
+                    <a href="{% url 'signup' %}">New User?</a><br>
+                    <a href="{% url 'forgotpassword' %}">Forgot Password?</a>
+                </div>
+                 <button class="login-btn">
+                    <a href="{% url 'bookmytrip' %}">Login</a>
+                </button>
+                <button class="login-btn">
+                    <a>Reset</a>
+                </button>
+                </form>
+            </div>
+        </header>
+    </div>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="footer-section">
+	<div class="form-row">
+	<h6>ADDRESS</h6>
+	</div>
+	<div class="form-row">
+	Tours and Travels,
+	</div>
+	<div class="form-row">
+	Berna Road,Viratnagar,
+	</div>
+	<div class="form-row">
+	Himmatnagar, Gujarat.
+	</div>	
+    </div>
+	<div class="footer-section">
+	<div class="form-row">
+	<h6>CONTACT US</h6>
+	</div>
+	<div class="form-row">
+	mob: +91-6355791246
+	</div>
+	<div class="form-row">
+	email: travelproject241@gmail.com
+	</div>
+    </div>
+	<div class="footer-section">
+	<div class="form-row">
+	<h6>DETAILS</h6>
+	</div>
+	<div class="form-row">
+	Travel booking company.
+	</div>
+	<div class="form-row">
+	Many satisfied customers.
+	</div>
+    </div>
+    </div>
+</footer>
+</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

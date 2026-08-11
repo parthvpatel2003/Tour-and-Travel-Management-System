@@ -1,0 +1,228 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Package Type</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- SIDEBAR -->
+         <div class="sidebar">
+            <div class="profile">
+                <img src="{% static 'images/house.png' %}">
+                <h6>Welcome Admin</h6>
+            </div>
+            <hr>
+            <ul>
+                <li>
+                    <a href="{% url 'travel_admin:admin_dashboard' %}">
+                        <span class="material-icons">home</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:inquirydetails' %}">
+                        <span class="material-icons">description</span>
+                        Inquiry Detail
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:package_type' %}">
+                        <span class="material-icons">category</span>
+                        Package Type
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:role_master' %}">
+                        <span class="material-icons">supervisor_account</span>
+                        Role Master
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:plan_management' %}">
+                        <span class="material-icons">link</span>
+                        Plan Master
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:userdetails' %}">
+                        <span class="material-icons">person</span>
+                        Users Detail
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:destination' %}">
+                        <span class="material-icons">flight</span>
+                        Destination
+                    </a>
+                </li>
+                 <li>
+                    <a href="{% url 'travel_admin:admin_logout' %}">
+                        <span class="material-icons">logout</span>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- CONTENT -->
+        <div class="content">
+            <h4>Package Type</h4>
+            <div class="topbar">
+                <a href="?action=new" class="btn btn-primary">
+                    + NEW
+                </a>
+                <a href="?action=data" class="btn btn-secondary">
+                    Data
+                </a>
+            </div>
+            <!-- ADD / EDIT FORM -->
+            {% if action == "new" or action == "edit" %}
+            <div class="card shadow-sm m-5">
+                <div class="card-body">
+                    <h5>
+                        {% if action == "edit" %}
+                        Edit Package Type
+                        {% else %}
+                        Add Package Type
+                        {% endif %}
+                    </h5>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label>Destination</label>
+                            <select name="destination" class="form-select">
+                                <option value="India"{% if package.destination == "India" %}selected {% endif %}>
+                                    India
+                                </option>
+                                <option value="Australia"{% if package.destination == "Australia" %}selected {% endif %}>
+                                    Australia
+                                </option>
+                                <option value="Bali"{% if package.destination == "Bali" %}selected {% endif %}>
+                                    Bali
+                                </option>
+                                <option value="Disneyland"{% if package.destination == "Disneyland" %}selected {% endif %}>
+                                    Disneyland
+                                </option>
+                                <option value="Dubai"{% if package.destination == "Dubai" %}selected {% endif %}>
+                                    Dubai
+                                </option>
+                                <option value="Greece"{% if package.destination == "Greece" %}selected {% endif %}>
+                                    Greece
+                                </option>
+                                <option value="Maldives"{% if package.destination == "Maldives" %}selected {% endif %}>
+                                    Maldives
+                                </option>
+                                <option value="Paris"{% if package.destination == "Paris" %}selected {% endif %}>
+                                    Paris
+                                </option>
+                                <option value="Phuket"{% if package.destination == "Phuket" %}selected {% endif %}>
+                                    Phuket
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label>Package Type</label>
+                            <input type="text"name="package_type"class="form-control"value="{{package.package_type|default:''}}">
+                        </div>
+                        <div class="mb-3">
+                            <label>Plan</label>
+                            <input type="text"name="plan_management"class="form-control"value="{{package.plan_management|default:''}}">
+                        </div>
+                        <button class="btn btn-success" type="submit">
+                            {% if action == "edit" %}
+                            UPDATE
+                            {% else %}
+                            SAVE
+                            {% endif %}
+                        </button>
+                        <a href="{% url 'travel_admin:package_type' %}" class="btn btn-secondary">
+                            Cancel
+                        </a>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+            <!-- DATA TABLE -->
+            {% if action == "data" %}
+            <div class="card shadow-sm m-5">
+                <div class="card-body">
+                    <h5>Saved Package Types</h5>
+                    <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>ID</th>
+                                <th>Destination</th>
+                                <th>Package Type</th>
+                                <th>Plan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for package in package_list %}
+                            <tr>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">
+                                            <i class="material-icons">
+                                                more_vert
+                                            </i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item" href="{% url 'travel_admin:edit_package_type' package.id %}">
+                                                    <i class="material-icons">
+                                                        edit
+                                                    </i>
+                                                    Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="{% url 'travel_admin:delete_package_type' package.id %}" onclick="return confirm('Are you sure you want to delete this?');">
+                                                    <i class="material-icons">
+                                                        delete
+                                                    </i>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            <td>
+                                {{package.id}}
+                            </td>
+                            <td>
+                                {{package.destination}}
+                            </td>
+                            <td>
+                                {{package.package_type}}
+                            </td>
+                            <td>
+                                {{package.plan_management}}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5">
+                                No Data Found
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

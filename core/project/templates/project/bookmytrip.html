@@ -1,0 +1,118 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Book Page</title>
+    <link rel="stylesheet" href="{% static 'project/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <a class="logo">
+            <img src="{% static 'project/images/logo.png' %}" height="45" alt="logo">
+        </a>
+        <button class="destination-btn">
+            <a href="{% url 'index' %}">Logout</a>
+        </button>
+    <header>
+        <div class="slide">
+                <img src="{% static 'project/images/bookmytrip.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+    <aside>
+    <div class="form-row">
+        <div class="col-12 p-4">
+            <div class="heading">
+                <nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<h4><li class="breadcrumb-item active" aria-current="page">Booking trip form</li></h4>
+					</ol>
+				</nav>
+			</div>
+			<div class="form">
+                <form method="POST" action="{% url 'bookmytrip' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="form-group col-md-4"><label for="userid"><span class="req">* </span>UserId</label>
+                        <input id="userid" class="form-control" name="userid" type="text" placeholder="Enter User ID" required /></div>
+                    <div class="form-group col-md-4"><label for="role"><span class="req">* </span>Role</label>
+                        <select id="role" name="role" class="form-control" required>
+                            <option value="">Select Role</option>
+                            <option value="customer">Customer</option>
+                            <option value="travel">Travel</option>
+                            <option value="resort">Resort</option>
+                        </select>
+                    </div>    
+                    <div class="form-group col-md-4"><label for="travelNameFirst"><span class="req">* </span>First Name</label>
+                        <input id="first_name" class="form-control" name="travelNameFirst" type="text" placeholder="Your First Name" required /></div>
+                    <div class="form-group col-md-4"><label for="travelNameLast"><span class="req">* </span>Last Name</label>
+                        <input id="last_name" class="form-control" name="travelNameLast" type="text" placeholder="Your Last Name" required /></div>
+                    <div class="form-group col-md-4"><label for="telephone"><span class="req">* </span>Mobile no</label>
+                        <input id="mobile_no" class="form-control" name="telephone" type="text" placeholder="Your mobile no" required /></div>
+                </div>
+	            <hr>
+                <div class="row">
+                    <div class="form-group col-md-3"><label for="city"><span class="req">* </span>City</label>
+                        <input id="city" class="form-control" name="city" type="text" placeholder="Your City" required /></div>
+                    <div class="form-group col-md-3"><label for="state"><span class="req">* </span>State</label>
+                        <input id="state" class="form-control" name="state" type="text" placeholder="Your State" required /></div>
+                    <div class="form-group col-md-3"><label for="zip"><span class="req">* </span>Zip Code</label>
+                        <input id="zipcode" class="form-control" name="zip" type="text" placeholder="Your Zip Code" required /></div>
+                    <div class="form-group col-md-3"><label for="country"><span class="req">* </span>Country</label>
+                        <input id="country" class="form-control" name="country" type="text" placeholder="Your Country"  required  /></div>
+                </div>
+	            <hr>
+                <div class="row">
+                    <div class="form-group col-md-4"><label for="quoteEmail"><span class="req">* </span>Email address</label>
+                        <input id="email" class="form-control" name="quoteEmail" required type="email" placeholder="Enter email" aria-describedby="emailHelp" />
+                    </div>
+                    <div class="form-group col-md-4"><label for="travelers"><span class="req">* </span>Number of people</label>
+                        <input id="people"class="form-control" type="number" name="travelers" required min='1' value="1"/></div>
+                </div>
+	            <hr>
+                <div class="row">
+                    <div class="form-group col-md-3"><label for="travelFromCity"><span class="req">* </span>Travel From</label>
+                        <input id="fromcity" class="form-control" type="text" name="travelFromCity" placeholder="From City"  required  /></div>
+                    <div class="form-group col-md-3"><label for="travelFromState">&nbsp;</label>
+                        <input id="fromstate" class="form-control" type="text" name="travelFromState" placeholder="From State"  required  /></div>
+                    <div class="form-group col-md-3"><label for="travelFromCountry">&nbsp;</label>
+                        <input id="fromcountry" class="form-control" type="text" name="travelFromCountry" placeholder="From Country"  required  /></div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group col-md-3"><label for="travelPlaceCity"><span class="req">* </span>Travel To</label>
+                        <input id="tocity" class="form-control" type="text" name="travelPlaceCity" placeholder="To City"  required  /></div>
+                    <div class="form-group col-md-3"><label for="travelPlaceState">&nbsp;</label>
+                        <input id="tostate" class="form-control" type="text" name="travelPlaceState" placeholder="To State"  required  /></div>
+                    <div class="form-group col-md-3"><label for="travelPlaceCountry">&nbsp;</label>
+                        <input id="tocountry" class="form-control" type="text" name="travelPlaceCountry" placeholder="To Country"  required  /></div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group col-md-6"><label for="startdate"><span class="req">* </span>Start Date</label>
+                        <input id="startdate" class="form-control" name="startdate" required type="date" />
+                    </div>
+			        <div class="form-group col-md-6"><label for="enddate"><span class="req">* </span>End Date</label>
+                        <input id="enddate" class="form-control" name="enddate" required type="date" />
+                </div>
+            </div>
+            <div class="form-check">
+				<input type="checkbox" class="form-check-input" id="subscribe" name="subscribe" value="1">
+				<small id="subscribeHelp" class="form-text text-muted">I am not a robot.</small>
+			</div>
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" id="agree" name="agree" checked="checked" required value="1">
+				<small id="agreeHelp" class="form-text text-muted"><span class="req">* </span>Agree to Terms & Conditions</small>
+			</div>
+            <button class="destination-btn">Book</button>
+			<button class="destination-btn">
+                <a>Reset</a>
+            </button>
+		</form>
+	</div> 
+    </header>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactus Page</title>
+    <link rel="stylesheet" href="{% static 'project/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <a class="logo">
+                <img src="{% static 'project/images/logo.png' %}" height="45" alt="logo">
+            </a>
+            <ul class="menu-title">
+                <li><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                <li><a class="nav-link" href="{% url 'destination' %}">Destination</a></li>
+                <li><a class="nav-link" href="{% url 'package' %}">Package</a></li>
+                <li><a class="nav-link" href="{% url 'bookmytrip' %}">Book My Trip</a></li>
+                <li><a class="nav-link">Contactus</a></li>
+                <li><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
+                <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                <button class="admin-login">
+                    <a class="nav-link" href="{% url 'travel_admin:admin_login' %}">
+                        <i class="fas fa-user-shield"></i> Admin Login
+                    </a>
+                </button>
+            </ul>
+        </div>
+        <header>
+            <div class="slide">
+                <img src="{% static 'project/images/contact_us.jpg' %}">
+            </div>
+            <div class="container contact-container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 p-4 contact-box">
+                        <div class="heading">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item active">SEND US MESSAGE</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        {% if message %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    {% endif %}
+                    <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group col-md-4">
+                        <label for="userid"><span class="req">* </span>UserId</label>
+                        <input id="userid" class="form-control" name="userid" type="text" 
+                        placeholder="Enter User ID" required />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Name <span>*</span></label>
+                        <input type="text" name="name" class="form-control"
+                        placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Email <span>*</span></label>
+                        <input type="email" name="email" class="form-control"
+                        placeholder="xyz@gmail.com" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Mobile No <span>*</span></label>
+                        <input type="text" name="mobile_no" class="form-control"
+                        pattern="[0-9]{10}" placeholder="7836963349" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Message <span>*</span></label>
+                        <textarea name="message" class="form-control"
+                        rows="4" placeholder="Write your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="contactus-btn">Send</button>
+                    <button type="reset" class="contactus-btn">Reset</button>
+                </form>
+            </div>
+        </header>
+    </div>   
+</header>
+
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="footer-section">
+	<div class="form-row">
+	<h6>ADDRESS</h6>
+	</div>
+	<div class="form-row">
+	Tours and Travels,
+	</div>
+	<div class="form-row">
+	Berna Road,Viratnagar,
+	</div>
+	<div class="form-row">
+	Himmatnagar, Gujarat.
+	
+	</div>
+	</div>
+	<div class="footer-section">
+	<div class="form-row">
+	<h6>CONTACT US</h6>
+	</div>
+	<div class="form-row">
+	mob: +91-6355791246
+	</div>
+	<div class="form-row">
+	email: travelproject241@gmail.com
+	</div>
+	</div>
+	<div class="footer-section">
+	<div class="form-row">
+	<h6>DETAILS</h6>
+	</div>
+	<div class="form-row">
+	Travel booking company.
+	</div>
+	<div class="form-row">
+	Many satisfied customers.
+    </div>
+    </div>
+</footer>
+</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>  
+</div>
+</body>
+</html>

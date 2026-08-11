@@ -1,0 +1,217 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination Page</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="d-flex">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="{% static 'images/house.png' %}">
+                <h6>Welcome Admin</h6>
+            </div>
+            <hr>
+            <ul>
+                <li>
+                    <a href="{% url 'travel_admin:admin_dashboard' %}">
+                        <span class="material-icons">home</span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:inquirydetails' %}">
+                        <span class="material-icons">description</span>
+                        <span>Inquiry Detail</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:package_type' %}">
+                        <span class="material-icons">category</span>
+                        <span>Package Type</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:role_master' %}">
+                        <span class="material-icons">supervisor_account</span>
+                        <span>Role Master</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:plan_management' %}">
+                        <span class="material-icons">link</span>
+                        <span>Plan Master</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:userdetails' %}">
+                        <span class="material-icons">person</span>
+                        <span>Users Detail</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:destination' %}">
+                        <span class="material-icons">flight</span>
+                        <span>Destination</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="{% url 'travel_admin:admin_logout' %}">
+                        <span class="material-icons">logout</span>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            {% block content %}
+            <h4>Destination</h4>
+            <div class="topbar">
+                <a href="?action=new" class="btn">+NEW</a>
+                <a href="?action=data" class="btn">Data</a>   
+            </div>
+            {% if action == "new" or action == "edit" %}
+            <div class="card shadow-sm m-5">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label>Destination</label>
+                        <select id="destination" name="destination" class="form-select">
+                            <option>--Select Country--</option>
+                            <option value="India" {% if form.destination.value == "India" %}selected{% endif %}>India</option>
+                            <option value="Australia" {% if form.destination.value == "Australia" %}selected{% endif %}>Australia</option>
+                            <option value="Bali" {% if form.destination.value == "Bali" %}selected{% endif %}>Bali</option>
+                            <option value="Disneyland" {% if form.destination.value == "Disneyland" %}selected{% endif %}>Disneyland</option>
+                            <option value="Dubai" {% if form.destination.value == "Dubai" %}selected{% endif %}>Dubai</option>
+                            <option value="Greece" {% if form.destination.value == "Greece" %}selected{% endif %}>Greece</option>
+                            <option value="Maldives" {% if form.destination.value == "Maldives" %}selected{% endif %}>Maldives</option>
+                            <option value="Paris" {% if form.destination.value == "Paris" %}selected{% endif %}>Paris</option>
+                            <option value="Phuket" {% if form.destination.value == "Phuket" %}selected{% endif %}>Phuket</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Description</label>
+                        <textarea name="description" id="description" class="form-control" rows="3">{{ form.description.value|default_if_none:"" }}</textarea>
+                    </div>
+                    <input type="file" name="displaylogo">
+                    {% if form.instance.displaylogo %}
+                    <br>
+                    <img src="{{ form.instance.displaylogo.url }}" width="100">
+                    {% endif %}
+                    <br>
+                    <input type="file" name="displaybanner">
+                    {% if form.instance.displaybanner %}
+                    <br>
+                    <img src="{{ form.instance.displaybanner.url }}" width="200">
+                    {% endif %}
+                    <br>
+                    <button class="btn btn-success" name="save" type="submit">
+                        {% if action == "edit" %}
+                        Update
+                        {% else %}
+                        Save
+                        {% endif %}
+                    </button>
+                    <button class="btn-secondary" type="cancel">
+                        <a href="{% url 'travel_admin:destination' %}">Cancel</a>
+                    </button>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+            {% if action == "data" %}
+            <div class="card shadow-sm m-5">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Action</th>
+                                    <th>Id</th>
+                                    <th>Destination</th>
+                                    <th>Description</th>
+                                    <th>DisplayLogo</th>
+                                    <th>DisplayBanner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for destination in destination_list %}
+                                <tr>
+                                    <td>{{ destination.action }}
+                                        <div class="dropdown">
+                                            <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">
+                                                <i class="material-icons">more_vert</i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item"
+                                                    href="{% url 'travel_admin:edit_destination' destination.id %}">
+                                                    <i class="material-icons">edit</i> Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item"
+                                                    href="{% url 'travel_admin:delete_destination' destination.id %}"
+                                                    onclick="return confirm('Are you sure you want to delete this?');">
+                                                    <i class="material-icons">delete</i> delete
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>{{ destination.id }}</td>
+                                    <td>{{ destination.destination }}</td>
+                                    <td>{{ destination.description }}</td>
+                                    <td>{% if destination.displaylogo %}
+                                        <img src="{{ destination.displaylogo.url }}" height="70">
+                                        {% else %}
+                                        No Image
+                                        {% endif %}
+                                    </td>
+                                    <td>{% if destination.displaybanner %}
+                                        <img src="{{ destination.displaybanner.url }}" height="70">
+                                        {% else %}
+                                        No Image
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="6">No Data Found</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    const descriptions = {
+        "India": "India is a beautiful country known for its rich culture, heritage, and diverse traditions.",
+        "Australia": "Australia is famous for its beaches, wildlife, and modern cities.",
+        "Bali": "Bali is a tropical paradise known for temples, beaches, and scenic beauty.",
+        "Disneyland": "Disneyland is a magical theme park full of entertainment and adventure.",
+        "Dubai": "Dubai is known for luxury shopping, skyscrapers, and desert safaris.",
+        "Greece": "Greece is famous for ancient history, islands, and beautiful architecture.",
+        "Maldives": "Maldives is known for crystal clear water, resorts, and marine life.",
+        "Paris": "Paris is the city of love, famous for the Eiffel Tower and art.",
+        "Phuket": "Phuket is a popular island destination with beaches and nightlife."
+    };
+
+    document.getElementById("destination").addEventListener("change", function () {
+        let selected = this.value;
+        document.getElementById("description").value = descriptions[selected] || "";
+    });
+    </script>
+</body>
+</html>

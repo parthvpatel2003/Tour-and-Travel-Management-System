@@ -1,0 +1,180 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination Page</title>
+    <link rel="stylesheet" href="{% static 'project/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <a class="logo">
+                <img src="{% static 'project/images/logo.png' %}" height="45" alt="logo">
+            </a>
+            <ul class="menu-title">
+                <li><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                <li><a class="nav-link">Destination</a></li>
+                <li><a class="nav-link" href="{% url 'package' %}">Package</a></li>
+                <li><a class="nav-link" href="{% url 'bookmytrip' %}">Book My Trip</a></li>
+                <li><a class="nav-link" href="{% url 'contactus' %}">Contactus</a></li>
+                <li><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
+                <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                <button class="admin-login">
+                    <a class="nav-link" href="{% url 'travel_admin:admin_login' %}">
+                        <i class="fas fa-user-shield"></i> Admin Login
+                    </a>
+                </button>
+            </ul>
+        </div>
+        <header>
+            <div class="slide">
+                <img src="{% static 'project/images/destination.jpg' %}">
+            </div>
+    <div class="destinations">
+      <div class="destination-img">
+        <img src="{% static 'project/images/india.jpg' %}" class="img-fluid aboutimg" width="100%">
+      </div>
+      <div class="destination-content">
+        <h2 class="display-4">India</h2>
+        <p class="py-3">
+          India is a beautiful country known for its rich culture, heritage, and diverse traditions.
+        </p>
+        <button class="destination-btn">
+          <a href="{% url 'package' %}">Package</a>
+        </button>
+      </div>
+      <div class="destination-img">
+        <img src="{% static 'project/images/australia.jpg' %}" class="img-fluid aboutimg" width="100%">
+      </div>
+      <div class="destination-content">
+        <h2 class="display-4">Australia</h2>
+        <p class="py-3">Australia is a land of dreams. From the sacred legends of the aboriginal Dreamtime, when the great spirits conjured the coral reefs, rainforests, and scorched red deserts, to armchair travelers who describe Australia as their dream destination, the Land Down Under deserves all the hype. The world's smallest continent and largest island, Australia is almost the same size as the United States but with a population the size of New York State and some of the quirkiest wildlife on the planet.
+                        Australia is also a land of staggering contrasts and spectacular beauty. 
+        </p>
+  		  <button class="destination-btn">
+          <a href="{% url 'package' %}">Package</a>
+        </button>
+      </div>
+      <div class="destination-img">
+        <img src="{% static 'project/images/bali.jpg' %}" class="img-fluid aboutimg" width="100%">
+      </div>
+      <div class="destination-content">
+        <h2 class="display-4">Bali</h2>
+        <p class="py-3">Bali is known as the Island of the Gods, due to the numerous religious idols of Balinese ancient Hinduism which is enshrined in the locals’ daily life. Balinese culture focuses on balance and harmony and this is reflected in the numerous rituals, festivals and ceremonies which are endlessly practiced to show gratitude to the Hindu Gods. Indonesia is comprised of over 18,000 islands, yet it is the zen-like culture of Bali which makes it stand out from the rest as a memorable and wonderful holiday destination.</p>
+  		  <button class="destination-btn">
+          <a href="{% url 'package' %}">Package</a>
+        </button>
+      </div>
+      <div class="destination-img">
+        <img src="{% static 'project/images/disneyland.jpg' %}" class="img-fluid aboutimg" width="100%">
+      </div>
+      <div class="destination-content">
+        <h2 class="display-4">Disneyland</h2>
+        <p class="py-3">The world-famous theme park Disneyland , located in Marne-la-Vallée, is an enchanted kingdom for kids and grown-ups where you can meet all the Disney heroes and heroines in fairytale surroundings. Among the most popular attractions are Space Mountain, It's a Small World, Pirates of the Caribbean, Phantom Manor, Star Tours and Big Thunder Mountain – paradise for fans of imaginative fairground rides Also not to be missed is the famous Disney Parade, the spectacular and magical procession starring Mickey Mouse and all his friends.</p>
+  		  <button class="destination-btn">
+          <a href="{% url 'package' %}">Package</a>
+        </button>
+      </div>
+      <div class="destination-img">
+        <img src="{% static 'project/images/dubai.jpg' %}" class="img-fluid aboutimg" width="100%">
+      </div>
+      <div class="destination-content">
+        <h2 class="display-4">Dubai</h2>
+        <p class="py-3">Dubai is the United Arab Emirates' holiday hot spot. This city of high-rises and shopping malls has transformed itself from a desert outpost to a destination du-jour, where tourists flock for sales bargains, sunshine, and family fun. Dubai is famous for sightseeing attractions such as the Burj Khalifa  and shopping malls that come complete with mammoth aquariums and indoor ski slopes.</p>
+  		  <button class="destination-btn">
+          <a href="{% url 'package' %}">Package</a>
+        </button>
+      </div>
+      <div class="destination-img">
+        <img src="{% static 'project/images/greece.jpg' %}" class="img-fluid aboutimg" width="100%">
+      </div>
+      <div class="destination-content">
+        <h2 class="display-4">Greece</h2>
+        <p class="py-3">Greece is known for its natural beauty and fascinating culture. Ancient archaeological sites, cliffs tumbling into sparkling blue water, sand and pebble beaches, and a balmy Mediterranean climate make Greece one of Europe's prime tourist destinations.</p>
+  		  <button class="destination-btn">
+          <a href="{% url 'package' %}">Package</a>
+        </button>
+      </div>
+      <div class="destination-img">
+        <img src="{% static 'project/images/maldives.jpg' %}" class="img-fluid aboutimg" width="100%">
+      </div>
+      <div class="destination-content">
+        <h2 class="display-4">Maldives</h2>
+        <p class="py-3">The Maldives are known for their natural environment including the blue ocean, white beaches, and clean air. The climate of the Maldives is ideal for visitors to get engaged in water sports such as swimming, fishing, scuba diving, snorkeling, water-skiing. windsurfing andkite boarding.</p>
+  		  <button class="destination-btn">
+          <a href="{% url 'package' %}">Package</a>
+        </button>
+      </div>
+      <div class="destination-img">
+        <img src="{% static 'project/images/paris.jpg' %}" class="img-fluid aboutimg" width="100%">
+      </div>
+      <div class="destination-content">
+        <h2 class="display-4">Paris</h2>
+        <p class="py-3">The city is not only known as the most romantic place on Earth, but is also famous for its museums, cathedrals, the Eiffel Tower and several other attractions.Paris' museums and monuments are among its highest-esteemed attractions; tourism has motivated both the city and national governments to create new ones.</p>
+  		  <button class="destination-btn">
+          <a href="{% url 'package' %}">Package</a>
+        </button>
+      </div>
+      <div class="destination-img">
+        <img src="{% static 'project/images/phuket.jpg' %}" class="img-fluid aboutimg" width="100%">
+      </div>
+      <div class="destination-content">
+        <h2 class="display-4">Phuket</h2>
+        <p class="py-3">Phuket is Thailand's largest island, and arguably the most famous. Blue waters, sandy beaches, spicy Thai cuisine, and excellent snorkeling and diving are all part of the appeal. Travelers flock to Phuket for relaxation and adventure, and the island rates as one of the most popular destinations in Thailand.</p>
+  		  <button class="destination-btn">
+          <a href="{% url 'package' %}">Package</a>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+</header>
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+<div class="footer-section">
+	<div class="form-row">
+	<h6>ADDRESS</h6>
+	</div>
+	<div class="form-row">
+	Tours and Travels,
+	</div>
+	<div class="form-row">
+	Berna Road,Viratnagar,
+	</div>
+	<div class="form-row">
+	Himmatnagar, Gujarat.
+	
+	</div>
+	
+    </div>
+	<div class="footer-section">
+	<div class="form-row">
+	<h6>CONTACT US</h6>
+	</div>
+	<div class="form-row">
+	mob: +91-6355791246
+	</div>
+	<div class="form-row">
+	email: travelproject241@gmail.com
+	</div>
+	</div>
+	<div class="footer-section">
+	<div class="form-row">
+	<h6>DETAILS</h6>
+	</div>
+	<div class="form-row">
+	Travel booking company.
+	</div>
+	<div class="form-row">
+	Many satisfied customers.
+	</div>
+	</div>
+</div>
+
+</footer>
+</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

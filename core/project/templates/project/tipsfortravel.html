@@ -1,0 +1,168 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Tips Page</title>
+    <link rel="stylesheet" href="{% static 'project/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <a class="logo">
+                <img src="{% static 'project/images/logo.png' %}" height="45" alt="logo">
+            </a>
+            <ul class="menu-title">
+                <li><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                <li><a class="nav-link" href="{% url 'destination' %}">Destination</a></li>
+                <li><a class="nav-link" href="{% url 'package' %}">Package</a></li>
+                <li><a class="nav-link" href="{% url 'bookmytrip' %}">Book My Trip</a></li>
+                <li><a class="nav-link" href="{% url 'contactus' %}">Contactus</a></li>
+                <li><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
+                <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                <button class="admin-login">
+                    <a class="nav-link" href="{% url 'travel_admin:admin_login' %}">
+                        <i class="fas fa-user-shield"></i> Admin Login
+                    </a>
+                </button>
+            </ul>
+        </div>
+        <header>
+            <div class="slide">
+                <img src="{% static 'project/images/traveltips.jpg' %}">
+            </div>
+        <div class="tips">
+      <div class="tips-img">
+        <img src="{% static 'project/images/bag.jpg' %}" class="img-fluid aboutimg" width="83%" height="90%">
+      </div>
+      <div class="tips-content">
+        <h2 class="display-4">Pack Light</h2>
+        <p class="py-3">
+            Take half the clothes you think you will need. Write a list
+            of essentials, then reduce it and pack only what is necessary.
+        </p>
+      </div>
+      <div class="tips-img">
+        <img src="{% static 'project/images/creditcard.jpg' %}" class="img-fluid aboutimg" width="83%" height="90%">
+      </div>
+      <div class="tips-content">
+        <h2 class="display-4">Carry an Extra Bank Card</h2>
+        <p class="py-3"> 
+            Keep an extra debit or credit card with you in case your main
+            card is lost or stolen.
+        </p>
+      </div>
+      <div class="tips-img">
+        <img src="{% static 'project/images/alone.jpg' %}" class="img-fluid aboutimg" width="83%" height="90%">
+      </div>
+      <div class="tips-content">
+        <h2 class="display-4">Travel Alone at Least Once</h2>
+        <p class="py-3">
+            Solo travel helps build confidence, independence and teaches
+            valuable life skills.
+        </p>
+      </div>
+      <div class="tips-img">
+        <img src="{% static 'project/images/map.jpg' %}" class="img-fluid aboutimg" width="83%" height="90%">
+      </div>
+      <div class="tips-content">
+        <h2 class="display-4">Always Use Maps</h2>
+        <p class="py-3">
+            Don't hesitate to use Google Maps or ask locals for directions.
+        </p>
+      </div>
+      <div class="tips-img">
+        <img src="{% static 'project/images/lock.jpg' %}" class="img-fluid aboutimg" width="83%" height="90%">
+      </div>
+      <div class="tips-content">
+        <h2 class="display-4">Carry a Lock</h2>
+        <p class="py-3">
+            A small combination lock helps keep your luggage safe while
+            travelling.
+        </p>
+      </div>
+      <div class="tips-img">
+        <img src="{% static 'project/images/hotel.jpg' %}" class="img-fluid aboutimg" width="83%" height="90%">
+      </div>
+      <div class="tips-content">
+        <h2 class="display-4">Ask Hotel Staff</h2>
+        <p class="py-3">
+            Hotel staff often know the best restaurants, attractions and
+            local transport options.
+        </p>
+      </div>
+      <div class="tips-img">
+        <img src="{% static 'project/images/flight.jpg' %}" class="img-fluid aboutimg" width="83%" height="90%">
+      </div>
+      <div class="tips-content">
+        <h2 class="display-4">Compare Flight Prices</h2>
+        <p class="py-3">
+            Compare prices on different websites before booking your flight.
+        </p>
+      </div>
+      <div class="tips-img">
+        <img src="{% static 'project/images/identification.jpg' %}" class="img-fluid aboutimg" width="83%" height="90%">
+      </div>
+      <div class="tips-content">
+        <h2 class="display-4">Carry Your ID</h2>
+        <p class="py-3">
+            Always keep a government-issued ID with you for identification.
+        </p>
+      </div>
+      <div class="tips-img">
+        <img src="{% static 'project/images/first_aid.jpg' %}" class="img-fluid aboutimg" width="83%" height="90%">
+      </div>
+      <div class="tips-content">
+        <h2 class="display-4">Carry a First Aid Kit</h2>
+        <p class="py-3">
+            Keep basic medicines and a first-aid kit with you for emergencies.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+</header>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="footer-section">
+        <div class="form-row">
+        <h6>ADDRESS</h6>
+	    </div>
+	    <div class="form-row">
+	    Tours and Travels,
+	    </div>
+	    <div class="form-row">
+	    Berna Road,Viratnagar,
+	    </div>
+	    <div class="form-row">
+	    Himmatnagar, Gujarat.
+        </div>
+	</div>
+	<div class="footer-section">
+        <div class="form-row">
+	    <h6>CONTACT US</h6>
+	    </div>
+	    <div class="form-row">
+	    mob: +91-6355791246
+	    </div>
+	    <div class="form-row">
+	    email: travelproject241@gmail.com
+	    </div>
+	</div>
+	<div class="footer-section">
+        <div class="form-row">
+	    <h6>DETAILS</h6>
+	    </div>
+	    <div class="form-row">
+	    Travel booking company.
+	    </div>
+	    <div class="form-row">
+	    Many satisfied customers.
+      </div>
+	</div>
+</footer>
+</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Booked Page</title>
+    <link rel="stylesheet" href="{% static 'project/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <a class="logo">
+            <img src="{% static 'project/images/logo.png' %}" height="45" alt="logo">
+        </a>
+        <header>
+            <div class="slide">
+                <img src="{% static 'project/images/booked.JPG' %}">
+            </div>
+            <div class="congratulation-img">
+                    <img src="{% static 'project/images/congratulations.png' %}">
+            </div>
+            <div class="booked-content">
+                <h1>Your dream trip booked successfully</h1>
+                <h4>We will send your amount and bank details of your trip to your email for further process.</h4>
+            </div>
+            <button class="booked-btn">
+                <a href="{% url 'index' %}">Logout</a>
+            </button>
+        </header>
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+            <div class="footer-section">
+                <div class="form-row">
+                <h6>ADDRESS</h6>
+	            </div>
+	            <div class="form-row">
+                Tours and Travels,
+	            </div>
+	            <div class="form-row">
+                Berna Road,Viratnagar,
+	            </div>
+	            <div class="form-row">
+                Himmatnagar, Gujarat.
+	            </div>
+            </div>
+            <div class="footer-section">
+                <div class="form-row">
+                <h6>CONTACT US</h6>
+	            </div>
+	            <div class="form-row">
+                mob: +91-6355791246
+	            </div>
+	            <div class="form-row">
+                email: travelproject241@gmail.com
+	            </div>
+            </div>
+            <div class="footer-section">
+                <div class="form-row">
+                <h6>DETAILS</h6>
+	            </div>
+	            <div class="form-row">
+                Travel booking company.
+	            </div>
+	            <div class="form-row">
+                Many satisfied customers.
+	           </div>
+            </div>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</div>
+</body>
+</html>

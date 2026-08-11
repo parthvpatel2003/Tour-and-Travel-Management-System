@@ -1,0 +1,278 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+         <div class="sidebar">
+            <div class="profile">
+                <img src="{% static 'images/house.png' %}" alt="">
+                <h6>Welcome Admin</h6>
+            </div>
+            <hr>
+            <ul>
+                <li>
+                    <a href="{% url 'travel_admin:admin_dashboard' %}">
+                        <span class="material-icons">home</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:inquirydetails' %}">
+                        <span class="material-icons">description</span>
+                        Inquiry Detail
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:package_type' %}">
+                        <span class="material-icons">category</span>
+                        Package Type
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:role_master' %}">
+                        <span class="material-icons">supervisor_account</span>
+                        Role Master
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:plan_management' %}">
+                        <span class="material-icons">link</span>
+                        Plan Master
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:userdetails' %}">
+                        <span class="material-icons">person</span>
+                        Users Detail
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:destination' %}">
+                        <span class="material-icons">flight</span>
+                        Destination
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'travel_admin:admin_logout' %}">
+                        <span class="material-icons">logout</span>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Main Content -->
+         <div class="content">
+            <h3 class="mb-4">User Management</h3>
+            {% if action == "edit" %}
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5>Edit User Details</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label>User ID</label>
+                                <input type="text" class="form-control" value="{{ details.userid }}" readonly>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Role</label>
+                                <input type="text" class="form-control" name="role" value="{{ details.role }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" name="first_name" value="{{ details.first_name }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" name="last_name" value="{{ details.last_name }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Mobile</label>
+                                <input type="text" class="form-control" name="mobile" value="{{ details.mobile }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>City</label>
+                                <input type="text" class="form-control" name="city" value="{{ details.city }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>State</label>
+                                <input type="text" class="form-control" name="state" value="{{ details.state }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Zip Code</label>
+                                <input type="text" class="form-control" name="zip" value="{{ details.zip }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Country</label>
+                                <input type="text" class="form-control" name="country" value="{{ details.country }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" value="{{ details.email }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>People</label>
+                                <input type="number" class="form-control" name="people" value="{{ details.people }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>From City</label>
+                                <input type="text" class="form-control" name="from_city" value="{{ details.from_city }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>From State</label>
+                                <input type="text" class="form-control" name="from_state" value="{{ details.from_state }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>From Country</label>
+                                <input type="text" class="form-control" name="from_country" value="{{ details.from_country }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>To City</label>
+                                <input type="text" class="form-control" name="to_city" value="{{ details.to_city }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>To State</label>
+                                <input type="text" class="form-control" name="to_state" value="{{ details.to_state }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>To Country</label>
+                                <input type="text" class="form-control" name="to_country" value="{{ details.to_country }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Start Date</label>
+                                <input type="date" class="form-control" name="start_date" value="{{ details.start_date }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>End Date</label>
+                                <input type="date" class="form-control" name="end_date" value="{{ details.end_date }}">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">
+                            Update
+                        </button>
+                        <a href="{% url 'travel_admin:userdetails' %}" class="btn btn-secondary">
+                            Cancel
+                        </a>
+                    </form>
+                </div>
+            </div>
+            {% else %}
+            <!-- USER TABLE -->
+             <div class="card shadow">
+                <div class="card-header bg-dark text-white">
+                    <h5>User Details</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Action</th>
+                                    <th>User ID</th>
+                                    <th>Role</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Mobile</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Zip</th>
+                                    <th>Country</th>
+                                    <th>Email</th>
+                                    <th>People</th>
+                                    <th>From City</th>
+                                    <th>From State</th>
+                                    <th>From Country</th>
+                                    <th>To City</th>
+                                    <th>To State</th>
+                                    <th>To Country</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for userdetails in details_list %}
+                                <tr>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                                                <span class="material-icons">
+                                                    more_vert
+                                                </span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="{% url 'travel_admin:edit_userdetails' userdetails.id %}">
+                                                        <span class="material-icons">
+                                                            edit
+                                                        </span>
+                                                        Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <form method="POST" action="{% url 'travel_admin:delete_userdetails' userdetails.id %}">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="dropdown-item" onclick="return confirm('Delete this user?')">
+                                                            <span class="material-icons">
+                                                                delete
+                                                            </span>
+                                                            Delete
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>{{ userdetails.userid }}</td>
+                                    <td>{{ userdetails.role }}</td>
+                                    <td>{{ userdetails.first_name }}</td>
+                                    <td>{{ userdetails.last_name }}</td>
+                                    <td>{{ userdetails.mobile }}</td>
+                                    <td>{{ userdetails.city }}</td>
+                                    <td>{{ userdetails.state }}</td>
+                                    <td>{{ userdetails.zip }}</td>
+                                    <td>{{ userdetails.country }}</td>
+                                    <td>{{ userdetails.email }}</td>
+                                    <td>{{ userdetails.people }}</td>
+                                    <td>{{ userdetails.from_city }}</td>
+                                    <td>{{ userdetails.from_state }}</td>
+                                    <td>{{ userdetails.from_country }}</td>
+                                    <td>{{ userdetails.to_city }}</td>
+                                    <td>{{ userdetails.to_state }}</td>
+                                    <td>{{ userdetails.to_country }}</td>
+                                    <td>{{ userdetails.start_date }}</td>
+                                    <td>{{ userdetails.end_date }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="20" class="text-center text-danger">
+                                        No User Found
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <!-- End Content -->
+        </div>
+        <!-- End d-flex -->
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
